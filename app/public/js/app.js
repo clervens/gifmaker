@@ -8,7 +8,7 @@
 
 	server.on('messages', function(data){
 		console.log(data);
-		$(".video-container").append($("<a href='"+data.url+"' target='_blank'>"+data.info.title+"</a>"))
+		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
 	});
 
 	server.on('info', function(info){
