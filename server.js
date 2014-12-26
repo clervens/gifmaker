@@ -8,7 +8,7 @@ var app     = express();
 	server  = http.createServer(app),
 	// io      = socket.listen(server);
 	/*----- log: false disables the debug messages in the console ------*/
-	io      = socket.listen(server, { log: true });
+	io      = socket.listen(server, { log: false });
 
 /*---------------------------------------*
  * Views Engine
@@ -54,7 +54,8 @@ io.sockets.on('connection', function(client) {
 					return timeEnd - timeStart;
 				})());
 			}
-			proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
+			if (!process.env.BUILDPACK_URL)
+				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
 			proc.size('320x240')
 			.seek(data.starttime)
 			.on('error', function(err) {
