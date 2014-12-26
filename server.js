@@ -34,6 +34,7 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('generate', function(data) {
+		data = require(__dirname+"/modules/yt-data-parser.js")(data);
 		var filename = Math.random().toString(36).substring(7);
 		stream = ytdl(data.url);
 
@@ -60,6 +61,7 @@ io.sockets.on('connection', function(client) {
 			.seek(data.starttime)
 			.on('error', function(err) {
 				console.log('An error occurred: ' + err.message);
+				client.emit({message: err.message});
 			})
 			.on('end', function() {
 				client.emit('messages', {

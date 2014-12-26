@@ -48,7 +48,6 @@
 	}
 
 	server.on('connect', function(data) {
-		// chat.addChatter(nickname)
 	})
 
 	server.on('messages', function(data){
