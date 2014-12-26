@@ -52,7 +52,7 @@ io.sockets.on('connection', function(client) {
 					var timeStart = new Date("01/01/2007 " + data.starttime).getSeconds();
 					var timeEnd = new Date("01/01/2007 " + data.endtime).getSeconds();
 
-					return timeEnd - timeStart;
+					return Math.min(30, (timeEnd - timeStart));
 				})());
 			}
 			if (!process.env.BUILDPACK_URL)

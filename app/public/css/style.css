@@ -6,6 +6,7 @@
 .content .video-url-sender input[type=text]{background:#ebf0f1;border:1px solid #bcc3c7;box-sizing:border-box;padding:.5em;width:100%}
 .content .video-url-sender .form-submit{background:#39bf9e;border:none;color:rgba(255,255,255,0.8);padding:.5em 1em;position:absolute;right:-1px;text-align:center;top:1px;transition:.3s background linear;}
 .content .video-url-sender .form-submit:hover{background:#33ac8e;cursor:pointer}
+.content .video-url-sender .formats-container {margin-top: 10px;}
 
 input[type=text].error {border: 1px red solid !important;}
 label.error {color: red;font-size: .8em;}
