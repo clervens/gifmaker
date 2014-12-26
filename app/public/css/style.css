@@ -9,3 +9,5 @@
 
 input[type=text].error {border: 1px red solid !important;}
 label.error {color: red;font-size: .8em;}
+
+.error-message {display: block;color: red;background-color: lightpink;padding: 2px 10px;width: 300px;margin: 0 auto;text-align: center;margin-bottom: 10px;}

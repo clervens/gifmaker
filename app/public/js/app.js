@@ -1,29 +1,16 @@
 (function () {
 
 	var server = io.connect(window.location.origin);
+	var app = {};
 
-	server.on('connect', function(data) {
-		// chat.addChatter(nickname)
-	})
-
-	server.on('messages', function(data){
-		console.log(data);
-		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
-	});
-
-	server.on('info', function(info){
-		console.log(info);
-	});
-
-	$('.form-text')
-	.on('keypress', function(e) {
+	app.generate_gif = function(e) {
 		if (!$('form').valid())
-			return;
+			return false;
 		if (e.which === 13 || e.which === 1) {
 			e.preventDefault();
 			var url = $('.form-text').val();
 			if (url != "") {
-				data = serializeObject($("form"));
+				data = app.serializeObject($("form"));
 				if (data.starttime == "")
 					data.starttime = "00:00:00";
 				if (data.endtime == "")
@@ -32,10 +19,10 @@
 				// $('form')[0].reset();
 			}
 		}
-	})
-	.focus()
+		return false;
+	}
 
-	var serializeObject = function(form) {
+	app.serializeObject = function(form) {
 		var o = {};
 		var a = form.serializeArray();
 		$.each(a, function() {
@@ -50,6 +37,38 @@
 		});
 		return o;
 	};
+
+	app.errorMessage = function (err) {
+		$(".error-message").text(err.message).fadeIn('fast', function(){
+			errorMessage = this
+			setTimeout(function(){
+				$(errorMessage).fadeOut();
+			}, 10000);
+		});
+	}
+
+	server.on('connect', function(data) {
+		// chat.addChatter(nickname)
+	})
+
+	server.on('messages', function(data){
+		console.log(data);
+		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
+	});
+
+	server.on('info', function(info){
+		console.log(info);
+	});
+
+	server.on('error', function(err){
+		app.errorMessage(err);
+	});
+
+	$('.form-submit').on('click', app.generate_gif);
+
+	$('.form-text')
+	.on('keypress', app.generate_gif)
+	.focus()
 
 	$("form").validate();
 	$.validator.addMethod(
