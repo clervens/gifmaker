@@ -59,6 +59,7 @@ io.sockets.on('connection', function(client) {
 				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
 			proc.size('420x?')
 			.seek(data.starttime)
+			.fps(10)
 			.on('error', function(err) {
 				console.log('An error occurred: ' + err.message);
 				client.emit({message: err.message});
