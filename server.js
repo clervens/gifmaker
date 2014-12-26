@@ -47,14 +47,17 @@ io.sockets.on('connection', function(client) {
 			format = data.format;
 
 			proc = new ffmpeg({source:stream});
-			if (data.endtime) {
-				proc.duration((function(){
+			
+			proc.duration((function(){
+				if (data.endtime) {
 					var timeStart = new Date("01/01/2007 " + data.starttime).getSeconds();
 					var timeEnd = new Date("01/01/2007 " + data.endtime).getSeconds();
 
 					return Math.min(30, Math.max(1, timeEnd - timeStart));
-				})());
-			}
+				} else {
+					return 30;
+				}
+			})());
 			if (!process.env.BUILDPACK_URL)
 				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
 			proc.size('420x?')
