@@ -67,6 +67,9 @@ io.sockets.on('connection', function(client) {
 				console.log('An error occurred: ' + err.message);
 				client.emit({message: err.message});
 			})
+			.on('progress', function(progress) {
+				client.emit('progress', progress);
+			})
 			.on('end', function() {
 				client.emit('messages', {
 					info: info,
