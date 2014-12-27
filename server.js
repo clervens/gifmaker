@@ -39,6 +39,10 @@ io.sockets.on('connection', function(client) {
 
 		data = require(__dirname+"/modules/yt-data-parser.js")(data);
 		filename = Math.random().toString(36).substring(7);
+		if (!data.valid_url()){
+			client.emit('fail', {message: "invalid youtube video link or id"});
+			return;
+		}
 		stream = ytdl(data.url);
 
 		ytdl.getInfo(data.url, {}, function(err, info){
@@ -70,7 +74,7 @@ io.sockets.on('connection', function(client) {
 			.format(format)
 			.on('error', function(err) {
 				console.log('An error occurred: ' + err.message);
-				client.emit({message: err.message});
+				client.emit('fail', {message: err.message});
 			})
 			.on('progress', function(progress) {
 				client.emit('progress', progress.frames/(duration*FRAMES_PER_SECOND));
@@ -97,7 +101,7 @@ io.sockets.on('connection', function(client) {
 app.get('/', function(req, res) {
 	/*-----Render View------*/
 	res.render('index', {
-		title: "Test GifMaker",
+		title: "Cvolcy GifMaker",
 	})
 });
 

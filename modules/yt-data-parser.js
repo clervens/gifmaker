@@ -1,8 +1,9 @@
 var constructor = function (data) {
-	date_regex = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+	DATE_REGEX = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+	YT_URL_REGEX = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/;
 	FORMATS = ["gif", "webm"];
 	function timeFormatCheck (value, default_value) {
-		if (date_regex.test(value)) {
+		if (DATE_REGEX.test(value)) {
 			return value;
 		} else {
 			return default_value;
@@ -18,7 +19,11 @@ var constructor = function (data) {
 			return "gif";
 		}
 	})();
- 	console.log(data);
+	data.valid_url = function() {
+		console.log(YT_URL_REGEX.test(data.url));
+		return YT_URL_REGEX.test(data.url);
+	}
+	console.log(data);
 	return data;
 }
 

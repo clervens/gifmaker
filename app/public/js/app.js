@@ -60,7 +60,7 @@
 		$(".progress .progress-bar").css("width", parseInt(progress*100)+ "%").text(parseInt(progress*100) + " %");
 	});
 
-	server.on('error', function(err){
+	server.on('fail', function(err){
 		app.errorMessage(err);
 	});
 
@@ -79,7 +79,7 @@
         },
         "Please check your input."
 	);
-	$(".timerange input[type=text]").each(function(){
+	$(".timerange-container input[type=text]").each(function(){
 		$(this).rules("add", { regex: "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$" });
 	});
 
