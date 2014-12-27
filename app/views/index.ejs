@@ -1,46 +1,105 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><%= title %></title>
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link href="/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://getbootstrap.com/examples/cover/cover.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-	<div class="content">
-		<h2 class="title-bar"><%= title %></h2>
-		<div class="error-message" style="display:none"></div>
-		<div class="video-url-sender">
-			<form class="form-new-video-url">
-				<input type="text" name="url" class="form-text" placeholder="Youtube video URL" required>
-				<input type="button" value="Send" class="form-submit">
-				<small>ex. : https://www.youtube.com/watch?v=zKx2B8WCQuw</small>
-				<div class="timerage-container">
-					<div class="timerange">
-						<input type="text" name="starttime" placeholder="hh:mm:ss">
-					</div>
-					<div class="timerange">
-						<input type="text" name="endtime" placeholder="hh:mm:ss">
-					</div>
-					<small>The duration can't exceed 30 seconds</small>
-				</div>
-				<div class="formats-container">
-					<input type="radio" name="format" value="gif" checked>Gif
-					<input type="radio" name="format" value="webm">WebM
-				</div>
-			</form>
-		</div>
-		<section class="video-container">
-			<div class="progress"></div>
-			<ul></ul>
-		</section>
-	</div>
+	<div class="site-wrapper">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/vendor/jquery-validation-1.13.1/jquery.validate.min.js"></script>
-	<script src="/js/app.js"></script>
-</body>
-</html>
+		<div class="site-wrapper-inner">
+
+			<div class="cover-container">
+
+				<div class="masthead clearfix">
+					<div class="inner">
+						<h3 class="masthead-brand"><%= title %></h3>
+						<nav>
+							<ul class="nav masthead-nav">
+								<li class="active"><a href="#">Home</a></li>
+								<li><a href="#">Features</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+				<div class="inner cover">
+					<h1 class="cover-heading"><%= title %></h1>
+					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie et nulla sit amet auctor. Pellentesque ut accumsan erat. In laoreet aliquet est, eu aliquam mauris. Donec vulputate turpis id odio tristique bibendum</p>
+					<div class="error-message" style="display:none"></div>
+					<div class="video-url-sender">
+						<form class="form-new-video-url">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" name="url" class="form-control form-text" placeholder="Youtube video URL" />
+									<span class="input-group-addon form-submit">
+										<a>Send</a>
+									</span>
+								</div>
+								<small class="pull-left">ex. : https://www.youtube.com/watch?v=zKx2B8WCQuw</small>
+								<div class="clearfix"></div>
+								<div class="timerange-container">
+									<label for="starttime" class="col-sm-4 col-md-2 control-label">Start Time</label>
+									<div class="col-sm-8 col-md-4">
+										<input type="text" name="starttime" placeholder="hh:mm:ss" class="form-control"></div>
+										<label for="endtime" class="col-sm-4 col-md-2 control-label">End Time</label>
+										<div class="col-sm-8 col-md-4">
+											<input type="text" name="endtime" placeholder="hh:mm:ss" class="form-control">
+										</div>
+										<small class="pull-left">The duration can't exceed 30 seconds</small>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="formats-container">
+									<div class="radio-inline">
+										<label>
+											<input type="radio" name="format" value="gif" checked>
+											Gif
+										</label>
+									</div>
+									<div class="radio-inline">
+										<label>
+											<input type="radio" name="format" value="webm">
+											WebM
+										</label>
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<section class="video-container">
+							<div class="progress" style="display: none;">
+								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+									<span></span>
+								</div>
+							</div>
+							<ul class="col-sm-4"></ul>
+						</section>
+					</div>
+
+					<div class="mastfoot">
+						<div class="inner">
+							<p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="#">Clervens Volcy</a>.</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/js/vendor/jquery-2.1.1.min.js"><\/script>')</script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/js/vendor/jquery-validation-1.13.1/jquery.validate.min.js"></script>
+		<script src="/js/app.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	</body>
+	</html>

@@ -4,9 +4,9 @@
 	var app = {};
 
 	app.generate_gif = function(e) {
-		if (!$('form').valid())
-			return false;
 		if (e.which === 13 || e.which === 1) {
+			if (!$('form').valid())
+				return false;
 			e.preventDefault();
 			var url = $('.form-text').val();
 			if (url != "") {
@@ -19,7 +19,6 @@
 				// $('form')[0].reset();
 			}
 		}
-		return false;
 	}
 
 	app.serializeObject = function(form) {
@@ -57,7 +56,8 @@
 	});
 
 	server.on('progress', function(progress){
-		$(".progress").fadeIn().text(parseInt(progress*100) + " %");
+		$(".progress").fadeIn()
+		$(".progress .progress-bar").css("width", parseInt(progress*100)+ "%").text(parseInt(progress*100) + " %");
 	});
 
 	server.on('error', function(err){

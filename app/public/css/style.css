@@ -1,14 +1,6 @@
-.content {margin: 0 auto;width: 600px;}
-.content .video-url-sender {padding-bottom:50px;position:relative;}
-.content .video-url-sender .form-new-msg{bottom:0;left:0;position:absolute;width:100%}
-.content .video-url-sender .form-text{float:left;margin-right:4em;}
-.content .video-url-sender .timerange {width: 40%;display: block;margin: 10px 0;}
-.content .video-url-sender input[type=text]{background:#ebf0f1;border:1px solid #bcc3c7;box-sizing:border-box;padding:.5em;width:100%}
-.content .video-url-sender .form-submit{background:#39bf9e;border:none;color:rgba(255,255,255,0.8);padding:.5em 1em;position:absolute;right:-1px;text-align:center;top:1px;transition:.3s background linear;}
-.content .video-url-sender .form-submit:hover{background:#33ac8e;cursor:pointer}
-.content .video-url-sender .formats-container {margin-top: 10px;}
-
-input[type=text].error {border: 1px red solid !important;}
-label.error {color: red;font-size: .8em;}
-
-.error-message {display: block;color: red;background-color: lightpink;padding: 2px 10px;width: 300px;margin: 0 auto;text-align: center;margin-bottom: 10px;}
+.form-submit {cursor: pointer;}
+.form-submit a {text-decoration: none;}
+.timerange-container {margin-top: 40px;}
+.timerange-container label {padding-top: 7px;}
+.video-container ul {margin: 10px auto 0; float: none;}
+.video-container ul li {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
