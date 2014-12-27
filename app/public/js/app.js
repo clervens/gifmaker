@@ -50,13 +50,14 @@
 	server.on('connect', function(data) {
 	})
 
-	server.on('messages', function(data){
+	server.on('completed', function(data){
 		console.log(data);
+		$(".progress").fadeOut();
 		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
 	});
 
 	server.on('progress', function(progress){
-		console.log(progress);
+		$(".progress").fadeIn().text(parseInt(progress*100) + " %");
 	});
 
 	server.on('error', function(err){

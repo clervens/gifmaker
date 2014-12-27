@@ -1,4 +1,4 @@
-	var express  = require('express'),
+var express  = require('express'),
 	socket   = require('socket.io'),
 	http     = require('http'),
 	ytdl 	 = require('ytdl-core'),
@@ -34,8 +34,11 @@ io.sockets.on('connection', function(client) {
 	});
 
 	client.on('generate', function(data) {
+
+		FRAMES_PER_SECOND = 13;
+
 		data = require(__dirname+"/modules/yt-data-parser.js")(data);
-		var filename = Math.random().toString(36).substring(7);
+		filename = Math.random().toString(36).substring(7);
 		stream = ytdl(data.url);
 
 		ytdl.getInfo(data.url, {}, function(err, info){
@@ -45,6 +48,7 @@ io.sockets.on('connection', function(client) {
 			console.log("URL: ", data.url);
 
 			format = data.format;
+			duration = 30;
 
 			proc = new ffmpeg({source:stream});
 			
@@ -53,34 +57,33 @@ io.sockets.on('connection', function(client) {
 					var timeStart = new Date("01/01/2007 " + data.starttime).getSeconds();
 					var timeEnd = new Date("01/01/2007 " + data.endtime).getSeconds();
 
-					return Math.min(30, Math.max(1, timeEnd - timeStart));
-				} else {
-					return 30;
+					duration = Math.min(30, Math.max(1, timeEnd - timeStart));
 				}
+				return duration;
 			})());
 			if (!process.env.BUILDPACK_URL)
 				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
 			proc.size('420x?')
 			.seek(data.starttime)
-			.fps(10)
+			.fps(FRAMES_PER_SECOND)
+			.noAudio()
+			.format(format)
 			.on('error', function(err) {
 				console.log('An error occurred: ' + err.message);
 				client.emit({message: err.message});
 			})
 			.on('progress', function(progress) {
-				client.emit('progress', progress);
+				client.emit('progress', progress.frames/(duration*FRAMES_PER_SECOND));
 			})
 			.on('end', function() {
-				client.emit('messages', {
+				client.emit('completed', {
 					info: info,
-					message: 'done',
 					url: "/exports/" + filename + "." + format,
 					filename: filename,
 					format: format
 				});
 				console.log('Processing finished !');
 			})
-			.format(format)
 			.save(__dirname+"/app/public/exports/"+filename+"."+format);
 
 		});
