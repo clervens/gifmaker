@@ -1,4 +1,5 @@
-.form-submit {cursor: pointer;}
+body {background-color: #333E3F;}
+.form-submit {cursor: pointer; background-color: #88B8BD;}
 .form-submit a {text-decoration: none;}
 .timerange-container {margin-top: 40px;}
 .timerange-container label {padding-top: 7px;}
