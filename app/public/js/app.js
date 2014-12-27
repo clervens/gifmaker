@@ -55,8 +55,8 @@
 		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
 	});
 
-	server.on('info', function(info){
-		console.log(info);
+	server.on('progress', function(progress){
+		console.log(progress);
 	});
 
 	server.on('error', function(err){
