@@ -11,6 +11,7 @@
 			var url = $('.form-text').val();
 			if (url != "") {
 				data = app.serializeObject($("form"));
+				data.abstatus = !!$("[data-ad-slot] iframe").length;
 				if (data.starttime == "")
 					data.starttime = "00:00:00";
 				if (data.endtime == "")
@@ -51,7 +52,7 @@
 
 	server.on('completed', function(data){
 		console.log(data);
-		$(".progress").fadeOut();
+		$(".progress").fadeOut().find(".progress-bar").css("width", "0%").text("0 %");
 		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
 	});
 
