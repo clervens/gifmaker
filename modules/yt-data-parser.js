@@ -19,6 +19,14 @@ var constructor = function (data) {
 			return "gif";
 		}
 	})();
+	data.videoFilters = (function() {
+		console.log(data);
+		if (data.abstatus) {
+			return 'scale=480:-1';
+		} else {
+			return 'movie='+__dirname+'/../app/public/exports/watermark.png [watermark]; [in]scale=480:-1 [scale]; [scale][watermark] overlay=(main_w-overlay_w):(main_h-overlay_h) [out]';
+		}
+	})();
 	data.valid_url = function() {
 		console.log(YT_URL_REGEX.test(data.url));
 		return YT_URL_REGEX.test(data.url);

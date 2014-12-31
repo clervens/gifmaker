@@ -67,7 +67,8 @@ io.sockets.on('connection', function(client) {
 			})());
 			if (!process.env.BUILDPACK_URL)
 				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
-			proc.size('420x?')
+			proc.videoFilters(data.videoFilters)
+			// .size('420x?')
 			.seek(data.starttime)
 			.fps(FRAMES_PER_SECOND)
 			.noAudio()
