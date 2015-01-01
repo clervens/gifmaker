@@ -1,10 +1,13 @@
 body {background-color: #333E3F;}
 .form-submit {cursor: pointer; background-color: #88B8BD;}
 .form-submit a {text-decoration: none;}
-.timerange-container {margin-top: 40px;}
+.timerange-container {margin-top: 30px;}
 .timerange-container label {padding-top: 7px;}
+.timerange-container input.form-control {margin-bottom: 4px;}
 .video-container ul {margin: 10px auto 0; float: none;}
 .video-container ul li {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
 
 label.error {color: red; font-size: .9em;}
 .error-message {color: red;}
+
+.video-url-sender small {margin-top: 5px;margin-left: 10px;}
