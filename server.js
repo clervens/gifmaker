@@ -109,7 +109,9 @@ app.get('/', function(req, res) {
 });
 app.get('/contact', function(req, res){
 	res.render('contact', {
-		title: "Cvolcy GifMaker"
+		title: "Cvolcy GifMaker",
+		description: "Contact",		
+		req: req
 	});
 });
 
