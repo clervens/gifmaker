@@ -107,6 +107,11 @@ app.get('/', function(req, res) {
 		req: req
 	})
 });
+app.get('/contact', function(req, res){
+	res.render('contact', {
+		title: "Cvolcy GifMaker"
+	});
+});
 
 server.listen(process.env.PORT || 4000);
 console.log('Listening on port '+(process.env.PORT || 4000)+'...');
