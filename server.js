@@ -107,41 +107,7 @@ app.get('/', function(req, res) {
 		req: req
 	})
 });
-
-var email   = require("emailjs/email")
-	.server.connect({
-	   user:    process.env.SMTP_USERNAME, 
-	   password:process.env.SMTP_PASSWORD, 
-	   host:    "smtp.gmail.com", 
-	   ssl:     true
-	});
-
-app.route('/contact')
-.get(function(req, res){
-	res.render('contact', {
-		title: "Cvolcy GifMaker",
-		description: "Contact",
-		submitted: false,
-		error: false,
-		req: req
-	});
-})
-.post(function(req, res){
-	var message = {
-	   text:    "i hope this works", 
-	   from:    "Clervens <clervens.volcy@gmail.com>", 
-	   to:      "clervens <clervens.volcy@gmail.com>",
-	   subject: "testing emailjs"
-	};
-	email.send(message, function(err, message) { console.log(err || message); });
-	res.render('contact', {
-		title: "Cvolcy GifMaker",
-		description: "Contact",
-		submitted: true,
-		error: false,
-		req: req
-	});
-});
+app.use('/', require('./routes/contact'));
 
 server.listen(process.env.PORT || 4000);
 console.log('Listening on port '+(process.env.PORT || 4000)+'...');
