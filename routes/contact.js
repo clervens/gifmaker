@@ -1,4 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var parseUrlEncoded = bodyParser.urlencoded({ extended: false });
+
 var email   = require("emailjs/email")
 	.server.connect({
 	   user:    process.env.SMTP_USERNAME, 
@@ -10,30 +13,32 @@ var email   = require("emailjs/email")
 var router = express.Router();
 
 router.route('/contact')
-.get(function(req, res){
-	res.render('contact', {
-		title: "Cvolcy GifMaker",
-		description: "Contact",
-		submitted: false,
-		error: false,
-		req: req
+	.get(function(req, res){
+		res.render('contact', {
+			title: "Cvolcy GifMaker",
+			description: "Contact",
+			submitted: false,
+			error: false,
+			req: req
+		});
+	})
+	.post(parseUrlEncoded, function(req, res){
+		var message = {
+		   text:    req.params.message, 
+		   from:    req.params.name +" <"+req.params.email+">", 
+		   to:      "clervens <clervens.volcy@gmail.com>",
+		   subject: "GifMaker | Contact Request"
+		};
+		console.log(req.params);
+		email.send(message, function(err, message) { 
+			res.render('contact', {
+				title: "Cvolcy GifMaker",
+				description: "Contact",
+				submitted: !err || true,
+				error: err,
+				req: req
+			});
+		});
 	});
-})
-.post(function(req, res){
-	var message = {
-	   text:    "i hope this works", 
-	   from:    "Clervens <clervens.volcy@gmail.com>", 
-	   to:      "clervens <clervens.volcy@gmail.com>",
-	   subject: "testing emailjs"
-	};
-	email.send(message, function(err, message) { console.log(err || message); });
-	res.render('contact', {
-		title: "Cvolcy GifMaker",
-		description: "Contact",
-		submitted: true,
-		error: false,
-		req: req
-	});
-});
 
 module.exports = router;
