@@ -11,7 +11,7 @@
   "dependencies": {
     "socket.io": "~0.9",
     "ejs": "~0.8.5",
-    "express": "~3.4",
+    "express": "~4.0",
     "fluent-ffmpeg": "~2.0",
     "ytdl-core": "~0.2.0",
     "emailjs": "~0.3.12",

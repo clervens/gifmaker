@@ -1,5 +1,4 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
 var crypto = require("../modules/crypto");
 var parseUrlEncoded = bodyParser.urlencoded({ extended: false });
