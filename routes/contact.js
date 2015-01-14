@@ -12,8 +12,6 @@ var email   = require("emailjs/email")
 	});
 
 var router = express.Router();
-console.log(router, express);
-router.use(parseUrlEncoded);
 
 function generateHumanCheck() {
 	var humanCheck = {nb1: Math.floor((Math.random() * 10) + 1),nb2: Math.floor((Math.random() * 10) + 1)};
