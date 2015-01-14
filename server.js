@@ -107,6 +107,7 @@ app.get('/', function(req, res) {
 		req: req
 	})
 });
+app.use('/', require('./routes/contact'));
 
 server.listen(process.env.PORT || 4000);
 console.log('Listening on port '+(process.env.PORT || 4000)+'...');

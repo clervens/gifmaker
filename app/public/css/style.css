@@ -11,3 +11,8 @@ label.error {color: red; font-size: .9em;}
 .error-message {color: red;}
 
 .video-url-sender small {margin-top: 5px;margin-left: 10px;}
+
+.contact-page .required-notice {position: relative; color: #333E3F;}
+.contact-page #submit {background-color: #88B8BD;border-color: lightgray;}
+.contact-page i.form-control-feedback {color: #333E3F;}
+.contact-page .input-group-addon .form-control-feedback {right: -2px;}
