@@ -83,7 +83,7 @@ io.sockets.on('connection', function(client) {
 			.on('end', function() {
 				client.emit('completed', {
 					info: info,
-					url: "/exports/" + filename + "." + format,
+					url: client.handshake.headers.referer + "exports/" + filename + "." + format,
 					filename: filename,
 					format: format
 				});

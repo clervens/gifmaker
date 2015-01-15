@@ -53,7 +53,9 @@
 	server.on('completed', function(data){
 		console.log(data);
 		$(".progress").fadeOut().find(".progress-bar").css("width", "0%").text("0 %");
-		$(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"))
+		// $(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"));
+		document.location.href = data.url;
+
 	});
 
 	server.on('progress', function(progress){
