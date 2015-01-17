@@ -66,7 +66,7 @@ io.sockets.on('connection', function(client) {
 				return duration;
 			})());
 			if (!process.env.BUILDPACK_URL)
-				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg');
+				proc.setFfmpegPath(__dirname+'/app/lib/ffmpeg'); // OSX VERSION ONLY
 			proc.videoFilters(data.videoFilters)
 			// .size('420x?')
 			.seek(data.starttime)
@@ -83,7 +83,7 @@ io.sockets.on('connection', function(client) {
 			.on('end', function() {
 				client.emit('completed', {
 					info: info,
-					url: "/exports/" + filename + "." + format,
+					url: client.handshake.headers.referer + "exports/" + filename + "." + format,
 					filename: filename,
 					format: format
 				});
