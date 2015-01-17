@@ -1,4 +1,6 @@
 var express = require('express');
+var ejs = require('ejs');
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var crypto = require("../modules/crypto");
 var parseUrlEncoded = bodyParser.urlencoded({ extended: false });
@@ -41,6 +43,20 @@ router.route('/contact')
 		var humanCheck = JSON.parse(crypto.decrypt(req.body.humancheck));
 		if (parseInt(req.body.real) != (humanCheck.nb1 + humanCheck.nb2)) {
 			message = {};
+		} else {
+			var messageHtml = ejs.render(fs.readFileSync(__dirname + '/../app/views/email_template.ejs', 'utf8'), {
+				req: req,
+				data: {
+					name: req.body.name,
+					message: req.body.message,
+					user: {
+						ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+						agent: req.headers['user-agent'],
+						referrer: req.headers['referrer'],
+					}
+				}
+			});
+			message.attachment = {data: messageHtml, alternative: true};
 		}
 		console.log(parseInt(req.body.real), JSON.parse(crypto.decrypt(req.body.humancheck)), message);
 		email.send(message, function(err, message) { 
