@@ -6,12 +6,9 @@ body, html {background-color: #333E3F;}
 .timerange-container input.form-control {margin-bottom: 4px;}
 .video-container ul {margin: 10px auto 0; float: none;}
 .video-container ul li {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-
 label.error {color: red; font-size: .9em;}
 .error-message {color: red;}
-
 .video-url-sender small {margin-top: 5px;margin-left: 10px;}
-
 .contact-page .required-notice {position: relative; color: #333E3F;}
 .contact-page #submit {background-color: #88B8BD;border-color: lightgray;}
 .contact-page form {margin-bottom: 10px;}
