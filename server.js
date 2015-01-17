@@ -102,7 +102,7 @@ io.sockets.on('connection', function(client) {
 app.get('/', function(req, res) {
 	/*-----Render View------*/
 	res.render('index', {
-		title: "Cvolcy GifMaker",
+		title: "Cvolcy GifMaker | Create animated gifs or webms from your favorite Youtube videos.",
 		description: "Create animated gifs or webms from your favorite Youtube videos. You just need the URL of the Youtube video, the time where it should start and when it should end.",
 		req: req
 	})

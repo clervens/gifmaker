@@ -61,7 +61,7 @@ router.route('/contact')
 		console.log(parseInt(req.body.real), JSON.parse(crypto.decrypt(req.body.humancheck)), message);
 		email.send(message, function(err, message) { 
 			res.render('contact', {
-				title: "Cvolcy GifMaker",
+				title: "Cvolcy GifMaker | Create animated gifs or webms from your favorite Youtube videos.",
 				description: "Contact",
 				submitted: !err,
 				error: err,
