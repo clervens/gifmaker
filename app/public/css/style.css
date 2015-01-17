@@ -1,4 +1,4 @@
-body {background-color: #333E3F;}
+body, html {background-color: #333E3F;}
 .form-submit {cursor: pointer; background-color: #88B8BD;}
 .form-submit a {text-decoration: none;}
 .timerange-container {margin-top: 30px;}
@@ -14,5 +14,7 @@ label.error {color: red; font-size: .9em;}
 
 .contact-page .required-notice {position: relative; color: #333E3F;}
 .contact-page #submit {background-color: #88B8BD;border-color: lightgray;}
+.contact-page form {margin-bottom: 10px;}
 .contact-page i.form-control-feedback {color: #333E3F;}
 .contact-page .input-group-addon .form-control-feedback {right: -2px;}
+.contact-page .mobile-abg {width:307px;margin:0 auto;}

@@ -26,6 +26,7 @@ router.route('/contact')
 	.get(function(req, res){
 		res.render('contact', {
 			title: "Cvolcy GifMaker",
+			short_description: "Create animated gifs or webms from your favorite Youtube videos.",
 			description: "Contact",
 			submitted: false,
 			error: false,
@@ -61,7 +62,8 @@ router.route('/contact')
 		console.log(parseInt(req.body.real), JSON.parse(crypto.decrypt(req.body.humancheck)), message);
 		email.send(message, function(err, message) { 
 			res.render('contact', {
-				title: "Cvolcy GifMaker | Create animated gifs or webms from your favorite Youtube videos.",
+				title: "Cvolcy GifMaker",
+				short_description: "Create animated gifs or webms from your favorite Youtube videos.",
 				description: "Contact",
 				submitted: !err,
 				error: err,
