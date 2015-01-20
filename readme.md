@@ -1,39 +1,26 @@
-README | CVolcy - GifMaker
+CVolcy - GifMaker
 ----
+Cvolcy-gifmaker is a simple app that create animated gifs or webms from your favorite Youtube videos. 
 
-## Node version
+You just need the URL of the Youtube video, the time where it should start and when it should end.
 
-*0.10.31*
+## Requirements
 
-## System dependencies
+### Modules dependencies
 
-- ejs `~1.0`  
-- express `~4.10`  
-- fluent-ffmpeg `~2.0`  
-- http `~0.0`  
-- package.json `~0.0`  
-- socket.io `~1.2`  
-- url `~0.10`  
-- ytdl-core `~0.2`  
+	- ejs `~1.0`  
+	- express `~4.10`  
+	- fluent-ffmpeg `~2.0`  
+	- http `~0.0`  
+	- package.json `~0.0`  
+	- socket.io `~1.2`  
+	- url `~0.10`  
+	- ytdl-core `~0.2`  
 
-## Configuration
+**Node version** : *0.10.31*
 
-## Database creation
+and [FFMpeg](https://www.ffmpeg.org/) version 2.5.1 and up.
 
-N/A
+***
 
-## Database initialization
-
-N/A
-
-## How to run the test suite
-
-N/A
-
-## Services (job queues, cache servers, search engines, etc.)
-
-N/A
-
-## Deployment instructions
-
-On Heroku @ [clervens-gif.herokuapp.com](http://clervens-gif.herokuapp.com/).
+Hosted on Heroku @ [gif.cvolcy.com](http://clervens-gif.herokuapp.com/) with these buildpacks [buildpack-multi](https://github.com/ddollar/heroku-buildpack-multi), [ffmpeg-buildpack](https://github.com/clervens/heroku-buildpack-ffmpeg.git) and [nodeJs-buildpack](https://github.com/heroku/heroku-buildpack-nodejs).
