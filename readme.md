@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/clervens/gifmaker/badges/gpa.svg)](https://codeclimate.com/github/clervens/gifmaker)
+
 CVolcy - GifMaker
 ----
 Cvolcy-gifmaker is a simple app that create animated gifs or webms from your favorite Youtube videos. 
