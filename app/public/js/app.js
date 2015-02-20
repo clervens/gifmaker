@@ -17,7 +17,6 @@
 				if (data.endtime == "")
 					delete data.endtime;
 				server.emit('generate', data);
-				// $('form')[0].reset();
 			}
 		}
 	}
@@ -51,9 +50,7 @@
 	})
 
 	server.on('completed', function(data){
-		console.log(data);
-		// $(".progress").fadeOut().find(".progress-bar").css("width", "0%").text("0 %");
-		// $(".video-container ul").append($("<li><a href='"+data.url+"' target='_blank'>"+data.info.title+"</a></li>"));
+		// console.log(data);
 		document.location.href = data.url;
 
 	});
@@ -75,15 +72,25 @@
 
 	$("form").validate();
 	$.validator.addMethod(
-        "regex",
-        function(value, element, regexp) {
-            var re = new RegExp(regexp);
-            return this.optional(element) || re.test(value);
-        },
-        "Please check your input."
-	);
+		"regex",
+		function(value, element, regexp) {
+			var re = new RegExp(regexp);
+			return this.optional(element) || re.test(value);
+		},
+		"Please check your input."
+		);
 	$(".timerange-container input[type=text]").each(function(){
 		$(this).rules("add", { regex: "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$" });
 	});
-
 })();
+
+$(function(){
+	if (!$("[data-ad-slot] iframe").length) {
+		$("script + script + script + script + div").fadeIn(4000, function(){
+			var warning = this;
+			setTimeout(function(){
+				$(warning).fadeOut(2000);
+			}, 15000);
+		});
+	}
+});

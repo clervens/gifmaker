@@ -6,15 +6,14 @@ body, html {background-color: #333E3F;}
 .timerange-container input.form-control {margin-bottom: 4px;}
 .video-container ul {margin: 10px auto 0; float: none;}
 .video-container ul li {text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-
 label.error {color: red; font-size: .9em;}
 .error-message {color: red;}
-
 .video-url-sender small {margin-top: 5px;margin-left: 10px;}
-
 .contact-page .required-notice {position: relative; color: #333E3F;}
 .contact-page #submit {background-color: #88B8BD;border-color: lightgray;}
 .contact-page form {margin-bottom: 10px;}
 .contact-page i.form-control-feedback {color: #333E3F;}
 .contact-page .input-group-addon .form-control-feedback {right: -2px;}
 .contact-page .mobile-abg {width:307px;margin:0 auto;}
+
+script + script + script + script + div {width: 60%;position: absolute;top: 15%;right: 20%;background-color: rgba(218, 37, 28, 0.9);-webkit-box-shadow: 0px 0px 16px 9px rgba(218, 37, 28, 0.9);-moz-box-shadow: 0px 0px 16px 9px rgba(218, 37, 28, 0.9);box-shadow: 0px 0px 16px 9px rgba(218, 37, 28, 0.9);z-index: 2;}
