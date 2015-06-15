@@ -2,9 +2,10 @@
 
 	var server = io.connect(window.location.origin);
 	var app = {};
+	var is_generating = false;
 
 	app.generate_gif = function(e) {
-		if (e.which === 13 || e.which === 1) {
+		if ((e.which === 13 || e.which === 1) && !is_generating) {
 			if (!$('form').valid())
 				return false;
 			e.preventDefault();
@@ -17,6 +18,8 @@
 				if (data.endtime == "")
 					delete data.endtime;
 				server.emit('generate', data);
+				$(".progress").fadeIn();
+				is_generating = !is_generating;
 			}
 		}
 	}
@@ -42,7 +45,7 @@
 			errorMessage = this
 			setTimeout(function(){
 				$(errorMessage).fadeOut();
-			}, 10000);
+			}, 6000);
 		});
 	}
 
@@ -52,16 +55,16 @@
 	server.on('completed', function(data){
 		// console.log(data);
 		document.location.href = data.url;
-
 	});
 
 	server.on('progress', function(progress){
-		$(".progress").fadeIn()
 		$(".progress .progress-bar").css("width", parseInt(progress*100)+ "%").text(parseInt(progress*100) + " %");
 	});
 
 	server.on('fail', function(err){
 		app.errorMessage(err);
+		$(".progress").fadeOut();
+		is_generating = false;
 	});
 
 	$('.form-submit').on('click', app.generate_gif);
